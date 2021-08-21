@@ -4,7 +4,9 @@ import {FaTrashAlt} from "react-icons/fa"
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Swal from "sweetalert2"
+import Footer from '../components/Footer'
 import { CarritoContainer, TituloH1,IconLista, CartImagen ,IconEliminar} from "./Styles"
+
 import { useHistory, useParams } from "react-router-dom"
 import { obtenerProductosPorId } from '../services/productoService'
 
@@ -134,6 +136,7 @@ export default function CarritoView() {
 
                 </div>
             </div>
+            <Footer/>
         </CarritoContainer>
       
     )

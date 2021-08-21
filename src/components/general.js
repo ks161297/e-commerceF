@@ -1271,3 +1271,14 @@ export const CartImagen = styled.img`
     height: 100px;
 `
 
+export const ButtonReg = styled.button`
+background: #AC5D5D;
+padding: 7px 40px;
+border: none;
+border-radius: 10px;
+color: #fff;
+font-size: 20px;
+cursor: pointer;
+border-style: solid;
+border-color: #CDB9B9;
+`

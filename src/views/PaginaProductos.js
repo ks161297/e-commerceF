@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar'
 import { IconGiftF,ProdTitle,Header5, IconProd, BtnContenedor } from './Styles';
 import CircularStatic from '../components/Cargando'
+import Footer from '../components/Footer'
 
 export default function PaginaProductos() {
     const [productos, setProductos] = useState([])
@@ -92,6 +93,7 @@ export default function PaginaProductos() {
                 </div>
                 <GrupoProductos productos={productos} />
             </div>)}
+        <Footer/>
         </div>
         
     )

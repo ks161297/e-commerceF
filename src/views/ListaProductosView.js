@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { obtenerProductos } from '../services/productoService'
 import './estilos.css';
+import Footer from '../components/Footer'
 
 export default function ListaProductosView() {
     const [productos, setProductos] = useState([])
@@ -60,6 +61,7 @@ export default function ListaProductosView() {
                     ))}
                 </tbody>
             </table>
+            <Footer/>
         </div>
     )
 }

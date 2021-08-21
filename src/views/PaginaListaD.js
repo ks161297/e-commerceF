@@ -6,6 +6,7 @@ import { obtenerProductosPorId } from '../services/productoService'
 import { CarritoContainer, IconLista2, TituloH1,CartImagen, IconCarrito2, IconEliminar,btnCarrito} from "./Styles"
 import {CarritoContext} from '../context/carritoContext'
 import Swal from "sweetalert2"
+import Footer from '../components/Footer'
 
 import { useHistory, useParams } from "react-router-dom"
 
@@ -150,6 +151,7 @@ export default function ListaDeseos() {
 
                 </div>
             </div>
+            <Footer/>
         </CarritoContainer>
     )
 }

@@ -9,6 +9,7 @@ import { useHistory } from 'react-router'
 import { DetProContainer, DetFIlas, ImagenContainer, ImagenProd, ContainerBody, CardBody, DeTitulo,DeDescr,DetPrecio,BtnContainer,DetButton, IconCarrito, IconLista, DetColor, DetMaterial } from './Styles'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
+import Footer from '../components/Footer'
 
 
 export default function ProductoView(props) {
@@ -143,6 +144,7 @@ export default function ProductoView(props) {
                    </ContainerBody>
                </DetFIlas>
            </DetProContainer>)}
+           <Footer/>
         </div>
     )
 }

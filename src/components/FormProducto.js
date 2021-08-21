@@ -1,4 +1,5 @@
 import {useRef} from "react"
+import {ButtonReg} from "./general"
 
 export default function FormProducto({
     value, 
@@ -113,9 +114,9 @@ export default function FormProducto({
                 </div>
 
                 <div className="d-grid">
-                    <button className="btn btn-primary btn-lg" type="submit">
+                    <ButtonReg type="submit">
                         Guardar
-                    </button>
+                    </ButtonReg>
                 </div>
             </form>
         </div>
