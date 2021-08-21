@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 import { obtenerProductos } from '../services/productoService'
 import './estilos.css';
 import Footer from '../components/Footer'
+import axios from 'axios';
+const URL = `${process.env.REACT_APP_API}productos`
 
 export default function ListaProductosView() {
     const [productos, setProductos] = useState([])
+    const [Api,setApi] = useState([])
 
     const getProductos = async () => {
         try {
@@ -16,6 +19,17 @@ export default function ListaProductosView() {
         }
     }
 
+
+    const onDelete = (id) => {
+        axios.delete(`${URL}/${id}`)
+        .then(() => {
+            getProductos()
+        })
+    }
+
+
+
+        
     useEffect(() => {
         getProductos()
     }, [])
@@ -52,7 +66,7 @@ export default function ListaProductosView() {
                                     <i className="fas fa-edit"></i>
                                 </Link>
                                 {"   "}
-                                <Link className="btn btn-danger btn-sm" >
+                                <Link className="btn btn-danger btn-sm" onClick={() => onDelete(prod.prod_id)} >
                                     <i className="fas fa-trash-alt"></i>
                                     
                                 </Link>
