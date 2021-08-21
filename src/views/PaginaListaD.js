@@ -3,9 +3,10 @@ import { ListaContext } from "../context/listaContext"
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { obtenerProductosPorId } from '../services/productoService'
-import { CarritoContainer, IconLista2, TituloH1, IconCarrito2, IconEliminar,btnCarrito} from "./Styles"
+import { CarritoContainer, IconLista2, TituloH1,CartImagen, IconCarrito2, IconEliminar,btnCarrito} from "./Styles"
 import {CarritoContext} from '../context/carritoContext'
 import Swal from "sweetalert2"
+
 import { useHistory, useParams } from "react-router-dom"
 
 export default function ListaDeseos() {
@@ -18,7 +19,11 @@ export default function ListaDeseos() {
     const toggle = () => {
         setIsOpen(!isOpen)
     }
+    const totalItemsLista = lista.reduce((total,item) => {
+        return total + item.cantidad;
+   },0)
     const {eliminarDLista} = useContext(ListaContext)
+    
     const getProducto = async () => {
         try {
             let productoObtenido = await obtenerProductosPorId(id)
@@ -81,48 +86,70 @@ export default function ListaDeseos() {
     }, [])
     return (
         <CarritoContainer>
-             <Sidebar isOpen={isOpen} toggle={toggle}/>
+        <Sidebar isOpen={isOpen} toggle={toggle}/>
         <Navbar toggle={toggle}/>  
             <div className="my-4 text-center">
                 <TituloH1 className="fw-bold">
-                    
                     Guardar para después
-                    <IconLista2/>
-
+                    
                 </TituloH1>
-            </div>
+                <div className="row justify-content-center">
+                    <div className="col-sm-12 col-md-6">
+                        <h4>Estos son los elementos que tienes en tu lista:</h4>
+                        <ul className="list-group">
+                            {lista.map((prod,i) => (
+                                <li className="list-group-item d-flex justify-content-between"
+                                key={i}>
+                                    <div>
+                                        <span className="fw-bold">{prod.prod_nombre}</span>
+                                        <br />
+                                        <small>
+                                        <CartImagen 
+                                            className="img-thumbnail"
+                                            src={prod.prod_imagen} 
+                                            alt={prod.prod_imagen} />
 
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                        <th>Descuento</th>
-                        <th>Precio Unitario</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {lista.map((prod, i) => (
-                        <tr key={i}>
-                            <td>{prod.prod_nombre}</td>
-                            <td>{prod.cantidad}</td>
-                            <td>{prod.prod_oferta ? "5%" : "Sin Oferta"}</td>
-                            <td>S/ {prod.prod_precio}</td>
-                            <td>
-                                <btnCarrito onClick={anadirACarritoContext}>
-                                <IconCarrito2/>
-                                </btnCarrito>
-                                <btnEliminar onClick={eliminarDListaContext}>
-                                <IconEliminar/>
-                                </btnEliminar>
-                                
-                            </td>
-                            
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+                                        </small>
+
+                                    </div>
+                                    <div>
+                                        <br /><br /><br />
+                                        Descripción: {prod.prod_descripcion}
+                                        <br />
+                                        Color: {prod.prod_color}
+                                        <br />
+                                        Material: {prod.prod_material}
+                                    </div>
+                                    <div>
+									
+                                    <btnCarrito onClick={anadirACarritoContext}>
+                                        <IconCarrito2/>
+                                    </btnCarrito>
+                                    <btnEliminar onClick={eliminarDListaContext}>
+                                        <IconEliminar/>
+                                    </btnEliminar>
+                                    <div>S/ {prod.cantidad * prod.prod_precio}</div> 
+                                    
+                                    
+								</div>
+                                </li>
+                            ))}
+                            {totalItemsLista !== 0 ? (
+							<li className="list-group-item d-flex justify-content-between">
+								<span className="fw-bold">Total de elementos:</span>
+								<span> {totalItemsLista}</span>
+							</li>
+						) : (
+							<li className="list-group-item">
+								Todavía no ha agregado ningún producto.
+							</li>
+						)}
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
         </CarritoContainer>
     )
 }

@@ -7,7 +7,6 @@ import CrearProductoView from "./views/CrearProductoView"
 import EditarProductoView from "./views/EditarProductoView"
 import PaginaCarrito from "./views/PaginaCarrito"
 import PaginaListaD from "./views/PaginaListaD"
-import ContactoView from "./views/ContactoView"
 import PaginaCheckout from "./views/PaginaCheckout";
 import ProtectedRoute from "./components/ProtectedRoute"
 import RegistrarUsuario from "./views/RegistrarUsuario";
@@ -27,7 +26,6 @@ export default function Routes (){
             <Route path="/editar/:id" exact component={EditarProductoView} />
             <Route path="/carrito" exact component={PaginaCarrito} />
             <Route path="/lista" exact component={PaginaListaD} />
-            <Route path="/contacto" exact component={ContactoView}/>
             <ProtectedRoute path="/checkout" exact component={PaginaCheckout}/>
             <Route path="/registro" exact component={RegistrarUsuario}></Route>
             <Route path="/contactou" exact component={Contacto2}/>

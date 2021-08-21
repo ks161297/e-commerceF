@@ -1,18 +1,51 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CarritoContext } from "../context/carritoContext";
 import { useForm } from "react-hook-form";
+import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
+import { useHistory, useParams } from "react-router-dom"
+import Swal from "sweetalert2"
+import {CarritoContainer, TituloH1,CartImagen, IconEliminar, HeroBtnWrapper,ButtonHero,ArrowForward,ArrowRight} from "./Styles"
 
 
 export default function PaginaCheckout() {
 	const { carrito } = useContext(CarritoContext);
+	const [producto, setProducto] = useState({})
+	const history = useHistory()
+	const {eliminarDCarrito} = useContext(CarritoContext)
+	const [hover, setHover] = useState(false)
 
+    const onHover = () => {
+        setHover(!hover)
+    }
+	const [isOpen, setIsOpen] = useState(false)
+	const toggle = () => {
+		setIsOpen(!isOpen)
+	}
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
-
+	const eliminarDCarritoContext = async() => {
+        eliminarDCarrito(producto)
+        const resultado = await Swal.fire({
+            title:"Ok",
+            icon:'warning',
+            showConfirmButton:true,
+            showDenyButton:true,
+            confirmButtonText:'Seguir buscando',
+            denyButtonText:'Tu lista de deseos',
+            confirmButtonColor: '#ac5d5d',
+            denyButtonColor: '#CDB9B9' 
+        })
+        if(resultado.isConfirmed){
+            history.push('/productos')
+        }else if(resultado.isDenied){
+            history.push('/carrito')
+        }
+    }
 
 	let total = 0;
 
@@ -25,52 +58,73 @@ export default function PaginaCheckout() {
 	};
 
 	return (
-		<div className="container mt-4">
-			<h1>Verificar Compra</h1>
-			<p>Por favor verifique los productos e indique los datos solicitados</p>
-			<div className="row">
-				<div className="col-sm-12 col-md-6">
-					<h4>Productos en CarritoView</h4>
-					<ul className="list-group">
-						{carrito.map((prod, i) => (
-							<li
-								className="list-group-item d-flex justify-content-between"
-								key={i}
-							>
-								<div>
-									<span className="fw-bold">{prod.prod_nombre}</span>
-									<br />
-									<small>Cantidad: {prod.cantidad}</small>
-								</div>
+		<CarritoContainer>
+        <Sidebar isOpen={isOpen} toggle={toggle}/>
+        <Navbar toggle={toggle}/>  
+            <div className="my-4 text-center">
+                <TituloH1 className="fw-bold">
+                    Verificar Compra
+                    
+                </TituloH1>
+                <div className="row justify-content-between">
+                    <div className="col-sm-12 col-md-5" style={{marginLeft:'100px', marginTop:'50px'}}>
+                        <h4>Estos son los elementos que tienes para comprar:</h4>
+                        <ul className="list-group">
+                            {carrito.map((prod,i) => (
+                                <li className="list-group-item d-flex justify-content-between"
+                                key={i}>
+                                    <div>
+                                        <span className="fw-bold">{prod.prod_nombre}</span>
+                                        <br />
+                                        <small>
+                                        <CartImagen 
+                                            className="img-thumbnail"
+                                            src={prod.prod_imagen} 
+                                            alt={prod.prod_imagen} />
 
-								<small className="badge bg-dark rounded-pill p-3">
-									S/ {prod.cantidad * prod.prod_precio}
-								</small>
-							</li>
-						))}
-						{total !== 0 ? (
+                                        </small>
+
+                                    </div>
+                                    <div>
+                                        <br /><br /><br />
+                                        Descripción: {prod.prod_descripcion}
+                                        <br />
+                                        Color: {prod.prod_color}
+                                        <br />
+                                        Material: {prod.prod_material}
+                                    </div>
+                                    <div>
+                                    <btnEliminar onClick={eliminarDCarritoContext}>
+                                        <IconEliminar/>
+                                    </btnEliminar>
+                                    <div>S/ {prod.cantidad * prod.prod_precio}</div> 
+                                    
+                                    
+								</div>
+                                </li>
+                            ))}
+                            {total !== 0 ? (
 							<li className="list-group-item d-flex justify-content-between">
-								<span className="fw-bold">TOTAL:</span>
-								<span>S/ {total}</span>
+								<span className="fw-bold">Precio Total:</span>
+								<span> {total}</span>
 							</li>
 						) : (
 							<li className="list-group-item">
 								Todavía no ha agregado ningún producto.
 							</li>
 						)}
-					</ul>
-				</div>
+                        </ul>
 
-				<div className="col-sm-12 col-md-6">
+                    </div>
+					<div className="col-sm-12 col-md-6" style={{marginTop:'30px'}}>
 					<h4>Ingrese sus datos:</h4>
-
 					<form onSubmit={handleSubmit(recibirSubmit)}>
-						<div className="mb-2">
-							<label className="form-label">Nombres y apellidos</label>
-							<input
+		 				<div className="mb-2">
+		 					<label className="form-label">Nombres y apellidos</label>
+		 					<input
 								type="text"
 								className="form-control"
-								placeholder="Ej. Juan Perez"
+								placeholder="Ingrese su nombre y apellidos"
 								{...register("nombreCompleto", { required: true })}
 							/>
 							{errors.nombreCompleto && (
@@ -82,7 +136,7 @@ export default function PaginaCheckout() {
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Ej. +51 926707653"
+								placeholder="+51 994979361"
 								{...register("telefono", {
 									minLength: { value: 6, message: "Se requiere 6 dígitos" },
                                     maxLength: { value: 14, message: "Máximo 14 dígitos"}
@@ -97,19 +151,24 @@ export default function PaginaCheckout() {
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Ej. Urb. Yanahuara S/N"
+								placeholder="Cayma"
                                 {...register("direccion", {pattern: /^[A-Za-z]$/})}
 							/>
                             {errors.direccion && (
 								<small className="text-danger">El formato no es adecuado</small>
 							)}
 						</div>
-						<button type="submit" className="btn btn-dark">
-							Confirmar Compra
-						</button>
+						<HeroBtnWrapper>
+                            <ButtonHero to='/checkout'
+                                onMouseEnter={onHover} 
+                                onMouseLeave={onHover}> ¡Vamos a comprar! {hover ? <ArrowForward/> : <ArrowRight/>}</ButtonHero>
+                        </HeroBtnWrapper>
 					</form>
 				</div>
-			</div>
-		</div>
+
+                </div>
+            </div>
+        </CarritoContainer>
+		
 	);
 }

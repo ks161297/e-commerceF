@@ -147,10 +147,8 @@ const Navbar = ({toggle}) => {
                            exact='true'
                            offset={-80}>Contáctenos</NavLinks>
                        </NavItem>
-                    
                    </NavMenu>
                    <NavBtn>
-                      
                        <NavBtnLink onClick={() => setShow2(true)}>
                             <Badge badgeContent={totalItemsLista} color="primary">
                                 <Navlist/>
@@ -175,7 +173,6 @@ const Navbar = ({toggle}) => {
                                     <th scope="col">Descripción</th>
                                     <th scope="col">Precio</th>
                                     <th scope="col">Acciones</th>
-                              
                                 </tr>
                             </thead>
                             <tbody>
@@ -194,12 +191,19 @@ const Navbar = ({toggle}) => {
                                         <ButtonLista  onClick={eliminarDListaContext}>
                                             <FaTrashAlt/>
                                             </ButtonLista>
-                                            
                                         </td>
-                                        
-                                       
                                     </tr>
                                 ))}
+                                {totalItemsLista !== 0 ? (
+							<li className="list-group-item d-flex justify-content-between">
+								<span className="fw-bold">Total de elementos:</span>
+								<span> {totalItemsLista}</span>
+							</li>
+						) : (
+							<li className="list-group-item">
+								Todavía no ha agregado ningún producto.
+							</li>
+						)}
                             </tbody>
                         </table>
                         <div className="modal-footer border-top-0 d-flex justify-content-between">
@@ -252,14 +256,25 @@ const Navbar = ({toggle}) => {
                                                 prod.cantidad * prod.prod_precio : 
                                                 prod.cantidad * prod.prod_precio}</td>
                                         <td>
-                                        <button type="button" onClick={eliminarDCarritoContext}>
-                                
-                                <FaTrashAlt/>
-
-                            </button>
+                                        <ButtonLista  onClick={eliminarDCarritoContext}>
+                                            <FaTrashAlt/>
+                                            </ButtonLista>
+                                            
                                         </td>
                                     </tr>
                                 ))}
+                                {totalItems !== 0 ? (
+							<li className="list-group-item d-flex justify-content-between">
+								<span className="fw-bold">Total de elementos:</span>
+								<span> {totalItems}</span>
+                                <span className="fw-bold">Precio total:</span>
+								<span> {totalCarrito}</span>
+							</li>
+						) : (
+							<li className="list-group-item">
+								Todavía no ha agregado ningún producto.
+							</li>
+						)}
                             </tbody>
                         </table>
                         <div className="d-flex justify-content-end">
@@ -310,15 +325,17 @@ const Navbar = ({toggle}) => {
                             <Modal.Body>
                                 <form>
                                     <div className="form-group">
-                                        <label for="inputUserName"> Usuario</label>
+                                        <label for="inputUserName" value="mksss161297@gmail.com"> Usuario</label>
                                         <input className="form-control" placeholder="Ingresa tu correo" type="text"/>
                                     </div>
                                     <div className="form-group">
-                                        <label for="inputPassword">Contraseña</label>
+                                        <label for="inputPassword" value="123456">Contraseña</label>
                                         <input className="form-control" placeholder="Ingresa tu contraseña" type="password" />
                                        
                                         <div className="modal-footer">
-                                            <ButtonSign type="submit">¡Ingresa!</ButtonSign>
+                                            <ButtonSign to='/listaProductos'>¡Ingresa!
+                                            
+                                            </ButtonSign>
                                             
                                         </div>
                                     </div>

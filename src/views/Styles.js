@@ -20,6 +20,10 @@ export const ProdTitle = styled.h1`
     text-align: center;
     padding 0 20px;
 `
+export const CartImagen = styled.img`
+    width: 250px;
+    height: 200px;
+`
 
 /**Detalle Producto */
 

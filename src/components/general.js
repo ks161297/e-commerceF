@@ -207,13 +207,26 @@ export const FormButton2 = styled.button`
         align-items: center;
         justify-content:center;
 `
-export const ButtonSign = styled.button`
-        border-radius: 5px;
-        align-items:center;
-        background: #AC5D5D;
-        color:#fff;
-        border-color:#AC5D5D;
-        justify-content:center;
+export const ButtonSign = styled(LinkR)`
+border-radius: 5px;
+background: #AC5D5D;
+white-space: nowrap;
+padding: ${({big})=> (big ? '14px 48px' : '12px 30px')};
+color: #fff;
+font-size: ${({fontBig}) => (fontBig ? '20px' : '16px')};
+outline: none;
+border: none;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: all 0.2s ease-in-out;
+
+&:hover {
+    transition: all 0.2s ease-in-out;
+    background: #AC5D5D;
+    color: #CDB9B9;
+}
 
 `
 

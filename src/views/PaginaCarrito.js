@@ -4,6 +4,7 @@ import {FaTrashAlt} from "react-icons/fa"
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Swal from "sweetalert2"
+import { CarritoContainer, TituloH1,IconLista, CartImagen ,IconEliminar} from "./Styles"
 import { useHistory, useParams } from "react-router-dom"
 import { obtenerProductosPorId } from '../services/productoService'
 
@@ -31,6 +32,15 @@ export default function CarritoView() {
             console.error(error)
         }
     }
+    const totalItems = carrito.reduce((total,item) => {
+        return total +item.cantidad;
+    },0)
+    
+ 
+     const totalCarrito = carrito.reduce((acum, item) => {
+         return acum + item.cantidad * item.prod_precio;
+     }, 0);
+ 
     const eliminarDCarritoContext = async() => {
         eliminarDCarrito(producto)
         const resultado = await Swal.fire({
@@ -55,59 +65,77 @@ export default function CarritoView() {
 
 
     return (
-      
-        <div className="container">
+        <CarritoContainer>
         <Sidebar isOpen={isOpen} toggle={toggle}/>
         <Navbar toggle={toggle}/>  
             <div className="my-4 text-center">
-                <h1 className="fw-bold">
-                    <i className="fas fa-shopping-cart me-3"/>
-                    Carrito de Compras
-                </h1>
-            </div>
+                <TituloH1 className="fw-bold">
+                <i className="fas fa-shopping-cart me-3"/>
+                    Carrito de compras
+                </TituloH1>
+                <div className="row justify-content-center">
+                    <div className="col-sm-12 col-md-6">
+                        <h4>Estos son los elementos que tienes en tu lista:</h4>
+                        <ul className="list-group">
+                            {carrito.map((prod,i) => (
+                                <li className="list-group-item d-flex justify-content-between"
+                                key={i}>
+                                    <div>
+                                        <span className="fw-bold">{prod.prod_nombre}</span>
+                                        <br />
+                                        <small>
+                                        <CartImagen 
+                                            className="img-thumbnail"
+                                            src={prod.prod_imagen} 
+                                            alt={prod.prod_imagen} />
 
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                        <th>Descuento</th>
-                        <th>Precio Unitario</th>
-                        <th>Precio Total</th>
-                        <th>
+                                        </small>
+
+                                    </div>
+                                    <div>
+                                        <br /><br /><br />
+                                        Descripción: {prod.prod_descripcion}
+                                        <br />
+                                        Color: {prod.prod_color}
+                                        <br />
+                                        Material: {prod.prod_material}
+                                    </div>
+                                    <div>
+                                    <btnEliminar onClick={eliminarDCarritoContext}>
+                                        <IconEliminar/>
+                                    </btnEliminar>
+                                    <div>S/ {prod.cantidad * prod.prod_precio}</div> 
+                                    
+                                    
+								</div>
+                                </li>
+                            ))}
+                            {totalItems !== 0 ? (
+							<li className="list-group-item d-flex justify-content-between">
+								<span className="fw-bold">Total de elementos:</span>
+								<span> {totalItems}</span>
+                                <span className="fw-bold">Precio total:</span>
+								<span> {totalCarrito}</span>
+							</li>
+						) : (
+							<li className="list-group-item">
+								Todavía no ha agregado ningún producto.
+							</li>
+						)}
                         
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {carrito.map((prod, i) => (
-                        <tr key={i}>
-                            <td>{prod.prod_nombre}</td>
-                            <td>{prod.cantidad}</td>
-                            <td>{prod.prod_oferta ? "10%" : "Sin Oferta"}</td>
-                            <td>S/ {prod.prod_precio}</td>
-                            <td>S/ {prod.prod_oferta ? 
-                            prod.cantidad * prod.prod_precio * 0.9 : 
-                            prod.cantidad * prod.prod_precio}</td>
-                            <td>
-                            <button type="button" onClick={eliminarDCarritoContext}>
-                                
-                                <FaTrashAlt/>
+                        </ul>
+                        <HeroBtnWrapper>
+                            <ButtonHero to='/checkout'
+                                onMouseEnter={onHover} 
+                                onMouseLeave={onHover}> ¡Vamos a comprar! {hover ? <ArrowForward/> : <ArrowRight/>}</ButtonHero>
+                        </HeroBtnWrapper>
 
-                            </button>
-                            </td>
-                        </tr>
-                    ))}
-                     
-                </tbody>
-               
-            </table>
-            <HeroBtnWrapper>
-                <ButtonHero to='/checkout'
-                    onMouseEnter={onHover} 
-                    onMouseLeave={onHover}> ¡Vamos a comprar! {hover ? <ArrowForward/> : <ArrowRight/>}</ButtonHero>
-            </HeroBtnWrapper>
-        </div>
+                    </div>
+
+                </div>
+            </div>
+        </CarritoContainer>
+      
     )
 }
 
