@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# PROYECTO FRONTEND
+## E-commerce ```handmade``` - Tienda de regalos personalizados :gift::package:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<p align="center" style="backgound-color:white; font-size:"45px"> PROYECTO FRONTEND HANDMADE M&A 
+        <img  src="https://cdn-icons-png.flaticon.com/512/4243/4243409.png" style="width:40px;height:40px;"/> </p>
+
+
+## ***Autores***: 
+
+> :octocat: Marigrace Silva Salas
+> Aylin Santa Cruz
+
+### IDEA DEL PROYECTO:
+Se implementará un ecommerce de producto realizados a mano con la finalidad de facilitar a los clientes con la elección de productos.
+
+### SOLUCIÓN 
+
+* Agilizara el proceso de venta vía web para así poder brindarles seguridad y cumpliendo los protocolos de sanidad al momento de su envió y entrega de productos.
+* Implementar un apartado para que el administrador que ejecute labores de control de ventas.
+
+### Contruído con :hammer_and_wrench: :
+
+> Framework: React js <img src="https://img.icons8.com/office/16/000000/react.png" style="width:20px;height:20px;"/>
+
+> Base de datos: Postgres <img src="https://img.icons8.com/color/50/000000/postgreesql.png" style="width:20px;height:20px;"/>
+
+> Editor de código: VSCode <img src="https://img.icons8.com/fluency/48/000000/visual-studio-code-2019.png" style="width:20px;height:20px;"/>
+
+> Boostrap: <img src="https://img.icons8.com/color/48/000000/bootstrap.png" style="width:20px;height:20px;"/>
+### MODELO ENTIDAD RELACIÓN 
+![image text](https://raw.githubusercontent.com/ks161297/proyecto_backend/avance01/E-commerce%20MER.png)
+
+> 
+# INSTRUCCIONES PARA EL REPOSITORIO
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento._
+
+Para una descarga directa: 
+1. Puedes descargar ó usango Git puede clonarlo. 
+
+```
+                       git clone https://github.com/ks161297/e-commerceF.git
+```
+2. Ya descargado o clonado, se creará la carpeta ```e-commerceF ``` en la rama ```main``` por defecto. 
+
+3. Cuando ya este descargado o clonado el proyecto, debe correr el código para que se instalen todas las dependencias.
+
+```
+                                            npm install
+```
+ 4. Para ejecutar y se muestre en el servidor
+ 
+```
+                                            npm start
+```
+
+
+### Scripts Disponibles 
+
+En el directorio del proyecto, puede ejecutar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Ejecuta la aplicación en el modo de desarrollo. \
+Abra [http: // localhost: 3000] (http: // localhost: 3000) para verlo en el navegador.
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Construye la aplicación para producción en la carpeta `build`. \
+Agrupa correctamente React en el modo de producción y optimiza la compilación para obtener el mejor rendimiento.
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+** Nota: esta es una operación unidireccional. Una vez que haya "expulsado", ¡no podrá regresar! **
