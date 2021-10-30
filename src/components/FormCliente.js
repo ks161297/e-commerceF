@@ -80,7 +80,7 @@ export default function FormCliente({
                 <div className="mb-3">
                     <label className="form-label">Correo</label>
                     <input 
-                        type="text"
+                        type="email"
                         className="form-control"
                         name="clienteCorreo"
                         value={value.clienteCorreo}
@@ -89,7 +89,7 @@ export default function FormCliente({
                 <div className="mb-3">
                     <label className="form-label">Contraseña</label>
                     <input 
-                        type="text"
+                        type="password"
                         className="form-control"
                         name="password"
                         value={value.password}
