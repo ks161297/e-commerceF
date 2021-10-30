@@ -333,7 +333,7 @@ const Navbar = ({toggle}) => {
                                             type="text"
                                             className="form-control" 
                                             name="clienteCorreo"
-                                            placeholder="Ingresa tu correo" type="text"/>
+                                            placeholder="Ingresa tu correo"/>
                                     </div>
                                     <div className="form-group">
                                         <label for="inputPassword" value="123456">Contraseña</label>
