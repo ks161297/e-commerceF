@@ -2,13 +2,12 @@ import { useRef } from "react";
 import { ButtonReg } from "./general";
 import imgLogin from "../images/login.jpg"
 
-export default function FormProducto({
+export default function FormCliente({
     value,
     actualizarInput,
-    manejarSubmit,
+    manejarSubmit
 }) {
 
-    const inputFile = useRef()
     return (
         <div className="row" style={{height:'calc(100vh - 60px)'}}>
         <div className="col-sm-10 col-md-4" style={{ height:'100%',overflow:'hidden'}}>
@@ -25,30 +24,48 @@ export default function FormProducto({
         <div className="col-sm-2 col-md-8 d-flex justify-content-center align-items-center">
             <form onSubmit={(e) =>{manejarSubmit(e)}}>
                 <div className="mb-3">
-                    <label className="form-label">Nombre Producto</label>
+                    <label className="form-label">Nombre Cliente</label>
                     <input 
                         type="text"
                         className="form-control"
-                        name="productoNombre"
-                        value={value.productoNombre}
+                        name="clienteNombre"
+                        value={value.clienteNombre}
                         onChange={(e) => {actualizarInput(e)}} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Descripcion</label>
-                    <input 
-                        type="text"
-                        className="form-control"
-                        name="productoDescripcion"
-                        value={value.productoDescripcion}
-                        onChange={(e) => {actualizarInput(e)}} />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Cantidad</label>
+                    <label className="form-label">Tipo de documento</label>
                     <input 
                         type="number"
                         className="form-control"
-                        name="productoCantidad"
-                        value={value.productoCantidad}
+                        name="clienteTipoDoc"
+                        value={value.clienteTipoDoc}
+                        onChange={(e) => {actualizarInput(e)}} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Número de documento</label>
+                    <input 
+                        type="number"
+                        className="form-control"
+                        name="clienteNroDoc"
+                        value={value.clienteNroDoc}
+                        onChange={(e) => {actualizarInput(e)}} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Dirección</label>
+                    <input 
+                        type="text"
+                        className="form-control"
+                        name="clienteDireccion"
+                        value={value.clienteDireccion}
+                        onChange={(e) => {actualizarInput(e)}} />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Tipo Cliente</label>
+                    <input 
+                        type="number"
+                        className="form-control"
+                        name="clienteTipo"
+                        value={value.clienteTipo}
                         onChange={(e) => {actualizarInput(e)}} />
                 </div>
                 <div className="mb-3">
@@ -56,40 +73,31 @@ export default function FormProducto({
                     <input 
                         type="checkbox"
                         className="form-check-input"
-                        name="productoEstado"
-                        value={value.productoEstado}
+                        name="clienteEstado"
+                        value={value.clienteEstado}
                         onChange={(e) => {actualizarInput(e)}} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Imagen</label>
+                    <label className="form-label">Correo</label>
                     <input 
                         type="text"
                         className="form-control"
-                        name="productoImagen"
-                        value={value.productoImagen}
+                        name="clienteCorreo"
+                        value={value.clienteCorreo}
                         onChange={(e) => {actualizarInput(e)}} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Precio</label>
+                    <label className="form-label">Contraseña</label>
                     <input 
-                        type="number"
+                        type="text"
                         className="form-control"
-                        name="productoPrecio"
-                        value={value.productoPrecio}
-                        onChange={(e) => {actualizarInput(e)}}/>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Categoria</label>
-                    <input 
-                        type="number"
-                        className="form-control"
-                        name="categoria"
-                        value={value.categoria}
+                        name="password"
+                        value={value.password}
                         onChange={(e) => {actualizarInput(e)}}/>
                 </div>
                 <div className="d-grid">
                     <ButtonReg type="submit">
-                        Guardar Producto
+                        Guardar Cliente
                     </ButtonReg>
 
                 </div>

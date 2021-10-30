@@ -1,11 +1,39 @@
 import axios from "axios"
 import {storage} from "../config/Firebase"
 
-const URL = `${process.env.REACT_APP_API}productos`
 
-const obtenerProductos = async(busqueda = "") => {
+const URL = `${process.env.REACT_APP_API}/handmade`
+
+const obtenerProductos = async() => {
+    try {
+        let {data} = await axios.get(`${URL}/productos/`)
+        return data 
+    } catch (error) {
+        throw error
+    }
+}
+
+const obtenerProductosxNombre = async(busqueda = "") => {
     try{
-        let {data} = await axios.get(`${URL}?search=${busqueda}`)
+        let{data}=await axios.get(`${URL}/filtro-productos?nombre=${busqueda}`)
+        return data
+    }catch(error){
+        throw error
+    }
+}
+
+const obtenerProductoxPrecio = async(busqueda = "") => {
+    try {
+        let {data} = await axios.get(`${URL}/filtro-productos?precio=${busqueda}`)
+        return data
+    }catch(error){
+        throw error
+    }
+}
+
+const obtenerProductosxCategoria = async(busqueda = "") => {
+    try {
+        let {data} = await axios.get(`${URL}/producto-categoria?categoria_id=${busqueda}`)
         return data
     }catch(error){
         throw error
@@ -14,19 +42,21 @@ const obtenerProductos = async(busqueda = "") => {
 
 const obtenerProductosPorId = async(id) => {
     try {
-        let {data} = await axios.get(`${URL}/${id}`)
+        let {data} = await axios.get(`${URL}/producto/${id}`)
         return data
-    }catch(error){
+    } catch (error) {
         throw error
     }
 }
+ 
+
 
 const crearProducto = async (nuevoProducto) => {
     try {
         const headers = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }
-        let { data } = await axios.post(URL, nuevoProducto, { headers })
+        let { data } = await axios.post(`${URL}/productos/` , nuevoProducto, {headers})
         return data
     } catch (error) {
         throw error
@@ -59,7 +89,7 @@ const eliminarProducto = async (productoliminado, id) => {
 
 const subirArchivo = (imagen) => {
     return new Promise((resolve, reject) => {
-        let refStorage = storage.ref(`fotos/${imagen.name}`)
+        let refStorage = storage.ref(`${URL}/subir-imagen/` , imagen)
         let tareaSubir = refStorage.put(imagen)
 
         tareaSubir.on("state_changed",
@@ -77,8 +107,11 @@ const subirArchivo = (imagen) => {
 
 export {
     obtenerProductos,
-    crearProducto,
+    obtenerProductosxNombre,
+    obtenerProductoxPrecio,
     obtenerProductosPorId,
+    obtenerProductosxCategoria,
+    crearProducto,
     editarProducto,
     subirArchivo,
     eliminarProducto

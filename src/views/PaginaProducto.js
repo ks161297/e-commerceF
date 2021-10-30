@@ -118,16 +118,14 @@ export default function ProductoView(props) {
                    <ImagenContainer className="col-md-8">
                    <ImagenProd 
                         className="img-fluid"
-                        src={producto.prod_imagen}
-                        alt={producto.prod_nombre} />
+                        src={producto.content.productoImagen}
+                        alt={producto.content.productoNombre} />
                    </ImagenContainer>
                    <ContainerBody className="col-md-4">
                        <CardBody className = "card-body">
-                           <DeTitulo className="fw-bold">{producto.prod_nombre}</DeTitulo>
-                           <DeDescr className="fw-bold"><hr/> {producto.prod_descripcion}<hr/></DeDescr>
-                           <DetColor> {producto.prod_color}</DetColor>
-                           <DetMaterial>{producto.prod_material}</DetMaterial>
-                           <DetPrecio>S/. {producto.prod_precio}</DetPrecio>
+                           <DeTitulo className="fw-bold">{producto.content.productoNombre}</DeTitulo>
+                           <DeDescr className="fw-bold"><hr/> {producto.content.productoDescripcion}<hr/></DeDescr>
+                           <DetPrecio>S/. {producto.content.productoPrecio}</DetPrecio>
                            
                         <BtnContainer>
                            <DetButton 

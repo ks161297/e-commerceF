@@ -19,9 +19,13 @@ const Footer = () => {
                                 <FooterLink to="/singin">Autores</FooterLink>
                         </FooterLinksItems>
                         <FooterLinksItems>
-                            <FooterLinkTitle>CONFIANZA</FooterLinkTitle>
-                                <FooterLink to="/singin">Compra Segura</FooterLink>
-                                <FooterLink to="/singin">Acerca de Nosotros</FooterLink>  
+                            <FooterLinkTitle>Pruebas</FooterLinkTitle>
+                                <FooterLink to="/crear-cliente">Crear cliente</FooterLink>
+                                <FooterLink to="/crear-categoria">Crear categoria</FooterLink>  
+                                <FooterLink to="/crear-producto">Crear Producto</FooterLink>
+                                <FooterLink to="/opciones-admin">Administrador</FooterLink>   
+
+                                
                         </FooterLinksItems>
                         <FooterLinksItems>
                             <FooterLinkTitle>SERVICIO AL CLIENTE</FooterLinkTitle>

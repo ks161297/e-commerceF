@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { obtenerProductos } from '../services/productoService'
+// import { obtenerProductos } from '../services/productoService'
+import {obtenerProductos, obtenerProductosxNombre, obtenerProductoxPrecio,obtenerProductosxCategoria} from '../services/productoService'
 import GrupoProductos from '../components/GrupoProductos';
 import Slider from '@material-ui/core/Slider';
 import Navbar from '../components/Navbar';
@@ -12,12 +13,14 @@ export default function PaginaProductos() {
     const [productos, setProductos] = useState([])
     const [productosOriginal, setProductosOriginal] = useState([])
     const [cargando, setCargando] = useState(true)
-    const [filtroPrecio, setFiltroPrecio] = useState([1, 100])
+    const [filtroPrecio, setFiltroPrecio] = useState([1, 1500])
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => {
         setIsOpen(!isOpen)
     }
     const inputBusqueda = useRef()
+    const inputBusqueda1 = useRef()
+    const inputBusqueda2 = useRef()
 
     const getProductos = async () => {
         try {
@@ -30,25 +33,36 @@ export default function PaginaProductos() {
         }
     }
 
-    const manejarPrecio = (evento, nuevosPrecios) => {
-        setFiltroPrecio(nuevosPrecios)
-    }
+
     const ejecutarBusqueda = async () => {
         let miBusqueda = inputBusqueda.current.value
-        const productosFiltrados = await obtenerProductos(miBusqueda)
+        const productosFiltrados = await obtenerProductosxNombre(miBusqueda)
+        // const productosFiltradosP = await obtenerProductosxNombre(miBusqueda)
+        // const productosCategoria = await obtenerProductosxCategoria(miBusqueda)
+        
         setProductos(productosFiltrados)
     }
+    const ejecutarBusqueda1 = async () => {
+        let miBusqueda = inputBusqueda1.current.value
+        const productosFiltrados = await obtenerProductoxPrecio(miBusqueda)
+        setProductos(productosFiltrados)
+    }
+
+
+    const ejecutarBusqueda2 = async () => {
+        let miBusqueda = inputBusqueda2.current.value
+        // const productosFiltrados = await obtenerProductosxNombre(miBusqueda)
+        // const productosFiltradosP = await obtenerProductosxNombre(miBusqueda)
+        const productosCategoria = await obtenerProductosxCategoria(miBusqueda)
+        
+        setProductos(productosCategoria)
+    }
+  
 
     useEffect(() => {
         getProductos()
     }, [])
 
-    useEffect(() => {
-        let productosFiltrados = productosOriginal.filter((prod) => {
-            return prod.prod_precio >= filtroPrecio[0] && prod.prod_precio <= filtroPrecio[1]
-        })
-        setProductos(productosFiltrados)
-    }, [filtroPrecio])
     return (
         
         <div>
@@ -62,35 +76,49 @@ export default function PaginaProductos() {
                         Catálogo
                         <IconGiftF/>
                     </ProdTitle>
-                    <div className="row my-2">
-                       <div className="col-12 col-md-6">
-                           <Header5>Filtrar Por precio</Header5>
-                           <Slider
-                                value={filtroPrecio}
-                                onChange={manejarPrecio}
-                                valueLabelDisplay="auto"
-                                min={1}
-                                max={120}
-                                color='secondary'
-                            />
-                       </div>
+                   
 
                        <div className="col-sm-12 col-md-6">
-                           <Header5>Filtro por nombre, material ó color</Header5>
-                           <div className="d-flex gap-1">
-                               <input 
-                                    type="text" 
-                                    className="form-control"
-                                    placeholder="Ingrese el nombre o descripción"
-                                    ref={inputBusqueda}
-                               />
-                               <BtnContenedor  onClick={ejecutarBusqueda}>
-                                    <IconProd/>
-                               </BtnContenedor>
+                           <Header5>Filtro nombre, precio, categoria</Header5>
+                           <div className="dropdown ">
+                               <span>Desliza el mouse para ver las opciones</span>
+                               <div className="dropdown-content">
+                                   <h4 className="filtro">Nombre
+                                   
+                                        <input 
+                                            type="text" 
+                                            className="form-control"
+                                            placeholder="Ingrese el nombre"
+                                            ref={inputBusqueda}/>
+                                            <BtnContenedor  onClick={ejecutarBusqueda}><IconProd/>
+                                            </BtnContenedor>
+                                   </h4>
+                                   <h4 className="filtro">Precio
+                                        <input 
+                                            type="text" 
+                                            className="form-control"
+                                            placeholder="Ingrese el precio"
+                                            ref={inputBusqueda1}/>
+                                            <BtnContenedor  onClick={ejecutarBusqueda1}>
+                                                <IconProd/>
+                                            </BtnContenedor>
+                                   </h4>
+                                   <h4 className="filtro">Categoria
+                                        <input 
+                                            type="text" 
+                                            className="form-control"
+                                            placeholder="Ingrese la categoría"
+                                            ref={inputBusqueda2}/>
+                                            <BtnContenedor  onClick={ejecutarBusqueda2}>
+                                                <IconProd/>
+                                            </BtnContenedor>
+                                   </h4>
+                              
+                            </div>
                            </div>
                         </div>
                     </div>
-                </div>
+              
                 <GrupoProductos productos={productos} />
             </div>)}
         <Footer/>

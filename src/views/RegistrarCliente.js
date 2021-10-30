@@ -1,27 +1,27 @@
 import {useState} from "react"
 
-import {crearProducto} from '../services/productoService'
+import {crearCliente} from '../services/clienteService'
 import { useHistory } from "react-router-dom"
 import Swal from "sweetalert2"
-import FormProducto from '../components/FormProducto'
+import FormCliente from '../components/FormCliente'
 
-
-export default function CrearProductoView(){
+export default function CrearClienteView(){
     const [value, setValue] = useState(
         {
-            productoNombre:"",
-            productoDescripcion:"",
-            productoCantidad:0,
-            productoEstado: false, 
-            productoPrecio: 0,
-            productoImagen:"",
-            categoria:0
+            clienteNombre:"",
+            clienteTipoDoc: 0,
+            clienteNroDoc: 0,
+            clienteDireccion:"",
+            clienteTipo:0,
+            clienteEstado: false,
+            clienteCorreo: "",
+            password:""
         }
     )
     const history = useHistory()
 
     const actualizarInput = (e) => {
-        if (e.target.name === "productoEstado"){
+        if (e.target.name === "clienteEstado"){
             setValue({
                 ...value,
                 [e.target.name]:e.target.checked
@@ -38,11 +38,10 @@ export default function CrearProductoView(){
     const manejarSubmit = async (e) => {
         e.preventDefault()
         try {
-            
-            await crearProducto({...value})
+            await crearCliente({...value})
             await Swal.fire({
                 icon:'success',
-                title:'Producto creado :)!',
+                title:'Cliente creado :)!',
                 showConfirmButton:false,
                 timer:3000
             })
@@ -51,12 +50,11 @@ export default function CrearProductoView(){
             console.log(error)
         }
     }
-
     return (
         <div>
-            <h1 className="text-center" style={{color:'#BF7C7C'}}>Registrar Producto</h1>
+            <h1 className="text-center" style={{color:'#BF7C7C'}}>Registrar Cliente</h1>
             
-            <FormProducto 
+            <FormCliente 
                 value={value} 
                 actualizarInput={actualizarInput}
                 manejarSubmit={manejarSubmit}

@@ -1,11 +1,10 @@
 import { useState, useContext , useEffect} from "react"
 import { CarritoContext } from "../context/carritoContext"
-import {FaTrashAlt} from "react-icons/fa"
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Swal from "sweetalert2"
 import Footer from '../components/Footer'
-import { CarritoContainer, TituloH1,IconLista, CartImagen ,IconEliminar} from "./Styles"
+import { CarritoContainer, TituloH1, CartImagen ,IconEliminar} from "./Styles"
 
 import { useHistory, useParams } from "react-router-dom"
 import { obtenerProductosPorId } from '../services/productoService'
@@ -40,7 +39,7 @@ export default function CarritoView() {
     
  
      const totalCarrito = carrito.reduce((acum, item) => {
-         return acum + item.cantidad * item.prod_precio;
+         return acum + item.cantidad * item.content.productoPrecio;
      }, 0);
  
     const eliminarDCarritoContext = async() => {
@@ -83,30 +82,27 @@ export default function CarritoView() {
                                 <li className="list-group-item d-flex justify-content-between"
                                 key={i}>
                                     <div>
-                                        <span className="fw-bold">{prod.prod_nombre}</span>
+                                        <span className="fw-bold">{prod.content.productoNombre}</span>
                                         <br />
                                         <small>
                                         <CartImagen 
                                             className="img-thumbnail"
-                                            src={prod.prod_imagen} 
-                                            alt={prod.prod_imagen} />
+                                            src={prod.content.productoImagen} 
+                                            alt={prod.content.productoImagen} />
 
                                         </small>
 
                                     </div>
                                     <div>
                                         <br /><br /><br />
-                                        Descripción: {prod.prod_descripcion}
+                                        Descripción: {prod.content.productoDescripcion}
                                         <br />
-                                        Color: {prod.prod_color}
-                                        <br />
-                                        Material: {prod.prod_material}
                                     </div>
                                     <div>
                                     <btnEliminar onClick={eliminarDCarritoContext}>
                                         <IconEliminar/>
                                     </btnEliminar>
-                                    <div>S/ {prod.cantidad * prod.prod_precio}</div> 
+                                    <div>S/ {prod.cantidad * prod.content.productoPrecio}</div> 
                                     
                                     
 								</div>
@@ -127,7 +123,7 @@ export default function CarritoView() {
                         
                         </ul>
                         <HeroBtnWrapper>
-                            <ButtonHero to='/checkout'
+                            <ButtonHero href='/checkout'
                                 onMouseEnter={onHover} 
                                 onMouseLeave={onHover}> ¡Vamos a comprar! {hover ? <ArrowForward/> : <ArrowRight/>}</ButtonHero>
                         </HeroBtnWrapper>

@@ -5,7 +5,7 @@ import {Nav, NavbarContainer, NavLogo, Navimg,CartImagen,FacebookIcon,GoogleIcon
 import logo from '../images/logoprincipal.png'
 import { IconContext } from 'react-icons/lib'
 import { animateScroll as scroll} from 'react-scroll'
-import { NavDropdown, Modal, Form } from 'react-bootstrap'
+import { NavDropdown, Modal } from 'react-bootstrap'
 import { CarritoContext } from "../context/carritoContext"
 import { ListaContext } from "../context/listaContext"
 import Badge from "@material-ui/core/Badge"
@@ -87,7 +87,7 @@ const Navbar = ({toggle}) => {
     },0)
 
 	const totalCarrito = carrito.reduce((acum, item) => {
-		return acum + item.cantidad * item.prod_precio;
+		return acum + item.cantidad * item.content.productoPrecio;
 	}, 0);
 
 
@@ -181,12 +181,12 @@ const Navbar = ({toggle}) => {
                                         <td>
                                             <CartImagen 
                                                 className="img-thumbnail"
-                                                src={prod.prod_imagen} 
-                                                alt={prod.prod_imagen} />
+                                                src={prod.content.productoImagen} 
+                                                alt={prod.content.productoImagen} />
                                         </td>
-                                        <td>{prod.prod_nombre}</td>
-                                        <td>{prod.prod_descripcion}</td>
-                                        <td> S/. {prod.prod_precio}</td>
+                                        <td>{prod.content.productoNombre}</td>
+                                        <td>{prod.content.productoDescripcion}</td>
+                                        <td> S/. {prod.content.productoPrecio}</td>
                                         <td>
                                         <ButtonLista  onClick={eliminarDListaContext}>
                                             <FaTrashAlt/>
@@ -207,7 +207,7 @@ const Navbar = ({toggle}) => {
                             </tbody>
                         </table>
                         <div className="modal-footer border-top-0 d-flex justify-content-between">
-                                <ButtonLista type="button"  to='/lista'>Lista</ButtonLista>                            
+                                <ButtonLista href='/lista'>Lista</ButtonLista>                            
                         </div>
                         </Modal.Body>
                         </Modal>
@@ -246,15 +246,14 @@ const Navbar = ({toggle}) => {
                                         <td>
                                             <CartImagen 
                                                 className="img-thumbnail"
-                                                src={prod.prod_imagen} 
-                                                alt={prod.prod_imagen} />
+                                                src={prod.content.productoImagen} 
+                                                alt={prod.content.productoImagen} />
                                         </td>
-                                        <td>{prod.prod_nombre}</td>
-                                        <td> S/. {prod.prod_precio}</td>
+                                        <td>{prod.content.productoNombre}</td>
+                                        <td> S/. {prod.content.productoPrecio}</td>
                                         <td>{prod.cantidad}</td>
-                                        <td>S/ {prod.prod_oferta ? 
-                                                prod.cantidad * prod.prod_precio : 
-                                                prod.cantidad * prod.prod_precio}</td>
+                                        <td>S/ {
+                                                prod.cantidad * prod.content.productoPrecio}</td>
                                         <td>
                                         <ButtonLista  onClick={eliminarDCarritoContext}>
                                             <FaTrashAlt/>
@@ -282,8 +281,8 @@ const Navbar = ({toggle}) => {
                         </div>
                         <div className="modal-footer border-top-0 d-flex justify-content-between">
                             
-                                <ButtonDetalle to="/carrito">Detalle</ButtonDetalle>
-                                <ButtonComprar to="/checkout">A Comprar</ButtonComprar>                            
+                                <ButtonDetalle href="/carrito">Detalle</ButtonDetalle>
+                                <ButtonComprar href="/checkout">A Comprar</ButtonComprar>                            
                         </div>
                             </Modal.Body>
                         </Modal>

@@ -123,7 +123,7 @@ export const NavBtn = styled.nav`
         display: none;
     }
 `
-export const NavBtnLink = styled(LinkR)`
+export const NavBtnLink = styled.button`
     border-radius: 50px;
     background: #AC5D5D;
     white-space: nowrap;
@@ -230,7 +230,7 @@ transition: all 0.2s ease-in-out;
 
 `
 
-export const ButtonComprar = styled(LinkR)`
+export const ButtonComprar = styled.button`
 border-radius: 5px;
 background: #AC5D5D;
 white-space: nowrap;
@@ -251,7 +251,7 @@ transition: all 0.2s ease-in-out;
     color: #CDB9B9;
 }
 `
-export const ButtonDetalle = styled(LinkR)`
+export const ButtonDetalle = styled.a`
 border-radius: 5px;
 background: #AC5D5D;
 white-space: nowrap;
@@ -269,9 +269,9 @@ transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     background: #AC5D5D;
     color: #CDB9B9;
-}
+}   
 `
-export const ButtonLista = styled(LinkR)`
+export const ButtonLista = styled.a`
 border-radius: 5px;
 background: #AC5D5D;
 white-space: nowrap;

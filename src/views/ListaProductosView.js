@@ -4,9 +4,10 @@ import { obtenerProductos } from '../services/productoService'
 import './estilos.css';
 import Footer from '../components/Footer'
 import axios from 'axios';
-const URL = `${process.env.REACT_APP_API}productos`
+const URL = `${process.env.REACT_APP_API}/handmade/productos/`
 
-export default function ListaProductosView() {
+export default function ListaProductos(props) {
+    console.log(props)
     const [productos, setProductos] = useState([])
     const [Api,setApi] = useState([])
 
@@ -14,18 +15,19 @@ export default function ListaProductosView() {
         try {
             const productosObtenidos = await obtenerProductos()
             setProductos(productosObtenidos)
+
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 
 
-    const onDelete = (id) => {
-        axios.delete(`${URL}/${id}`)
-        .then(() => {
-            getProductos()
-        })
-    }
+    // const onDelete = (id) => {
+    //     axios.delete(`${URL}/${id}`)
+    //     .then(() => {
+    //         getProductos()
+    //     })
+    // }
 
 
 
@@ -44,32 +46,29 @@ export default function ListaProductosView() {
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Precio</th>
                         <th>Descripción</th>
-                        <th>Colores</th>
-                        <th>Materiales</th>
-                        <th>Stock</th>
-                        <th>Acciones</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {productos.map((prod,i) => (
-                        <tr key={i}>
-                            <td>{prod.prod_nombre}</td>
-                            <td>{prod.prod_precio}</td>
-                            <td>{prod.prod_descripcion}</td>
-                            <td>{prod.prod_color}</td>
-                            <td>{prod.prod_material}</td>
-                            <td>{prod.prod_stock}</td>
+                    {props.productos && props.productos.map((productos) => (
+                        <tr key={productos.i}>
+                            <td>{productos.content.productoNombre}</td>
+                            <td>{productos.productoDescripcion}</td>
+                            <td>{productos.productoPrecio}</td>
+                            <td>{productos.productoCantidad}</td>
+                            <td>{productos.productoEstado}</td>
                             <td>
-                                <Link className="btn btn-warning btn-sm" to={`/editar/${prod.prod_id}`}>
+                                <Link className="btn btn-warning btn-sm" to={`/editar/${productos.productoId}`}>
                                     <i className="fas fa-edit"></i>
                                 </Link>
                                 {"   "}
-                                <Link className="btn btn-danger btn-sm" onClick={() => onDelete(prod.prod_id)} >
+                                {/* <Link className="btn btn-danger btn-sm" onClick={() => onDelete(prod.productoId)} >
                                     <i className="fas fa-trash-alt"></i>
                                     
-                                </Link>
+                                </Link> */}
                             </td>
                         </tr>
                     ))}

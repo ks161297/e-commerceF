@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import { GPContenedor, GProductos, GPWrapper,GPHeader,GPPrice,BtnRedirect,GPBody,GPFooter,GPLink,GPStock} from "./general"
 
 export default function GrupoProductos({productos}) {
@@ -8,23 +6,23 @@ export default function GrupoProductos({productos}) {
         <GPContenedor>
             <GPWrapper>
 
-                {productos.map((prod, i) => (
+                {productos.content.map((prod, i) => (
                     <GProductos key={i}>
-                        <GPLink className="card mb-4" to={`/detalle/${prod.prod_id}`}>
+                        <GPLink className="card mb-4" to={`/producto/${prod.productoId}`}>
                             <GPHeader className="card-header">
-                                {prod.prod_nombre}
+                                {prod.productoNombre}
                             </GPHeader>
                             <GPBody className="card-body">
                                 <img
-                                    src={prod.prod_imagen}
+                                    src={prod.productoImagen}
                                     className="card-img-top"
-                                    alt={prod.prod_nombre}/>
+                                    alt={prod.productoNombre}/>
                                 
-                                <GPPrice>S/. {prod.prod_precio}</GPPrice>
-                                <GPStock>Existen: {prod.prod_stock}</GPStock>
+                                <GPPrice>S/. {prod.productoPrecio}</GPPrice>
+                                <GPStock>Existen: {prod.productoCantidad}</GPStock>
                             </GPBody>
                             <GPFooter className="card-footer text-muted">
-                                <BtnRedirect to={`/detalle/${prod.prod_id}`} >¡Mira lo que contiene!</BtnRedirect>
+                                <BtnRedirect to={`/producto/${prod.productoId}`} >¡Mira lo que contiene!</BtnRedirect>
                             </GPFooter>
                         </GPLink>
                     </GProductos>

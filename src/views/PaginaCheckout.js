@@ -50,7 +50,7 @@ export default function PaginaCheckout() {
 	let total = 0;
 
 	total = carrito.reduce((acum, item) => {
-		return acum + item.cantidad * item.prod_precio;
+		return acum + item.cantidad * item.content.productoPrecio;
 	}, 0);
 
 	const recibirSubmit = (datos) => {
@@ -74,30 +74,29 @@ export default function PaginaCheckout() {
                                 <li className="list-group-item d-flex justify-content-between"
                                 key={i}>
                                     <div>
-                                        <span className="fw-bold">{prod.prod_nombre}</span>
+                                        <span className="fw-bold">{prod.content.productoNombre}</span>
                                         <br />
                                         <small>
                                         <CartImagen 
                                             className="img-thumbnail"
-                                            src={prod.prod_imagen} 
-                                            alt={prod.prod_imagen} />
+                                            src={prod.content.productoImagen} 
+                                            alt={prod.content.productoImagen} />
 
                                         </small>
 
                                     </div>
                                     <div>
                                         <br /><br /><br />
-                                        Descripción: {prod.prod_descripcion}
-                                        <br />
-                                        Color: {prod.prod_color}
-                                        <br />
-                                        Material: {prod.prod_material}
+                                        Descripción: {prod.content.productoDescripcion}
+										<br />
+										Cantidad: {prod.cantidad}
+                                       
                                     </div>
                                     <div>
                                     <btnEliminar onClick={eliminarDCarritoContext}>
                                         <IconEliminar/>
                                     </btnEliminar>
-                                    <div>S/ {prod.cantidad * prod.prod_precio}</div> 
+                                    <div>S/ {prod.cantidad * prod.content.productoPrecio}</div> 
                                     
                                     
 								</div>

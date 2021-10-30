@@ -8,7 +8,7 @@ const CarritoContextProvider = (props) => {
 
     const anadirACarrito = (producto) => {
         for(let i = 0; i < carrito.length; i++){
-            if(carrito[i].prod_id === producto.prod_id){
+            if(carrito[i].productoId === producto.content.productoId){
                 const productoExiste = {
                     ...carrito[i],
                     cantidad: carrito[i].cantidad + 1

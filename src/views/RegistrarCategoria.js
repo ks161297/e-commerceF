@@ -1,27 +1,21 @@
 import {useState} from "react"
 
-import {crearProducto} from '../services/productoService'
+import {crearCategoria} from '../services/categoriaService'
 import { useHistory } from "react-router-dom"
 import Swal from "sweetalert2"
-import FormProducto from '../components/FormProducto'
+import FormCategoria from '../components/FormCategoria'
 
-
-export default function CrearProductoView(){
+export default function CrearCategoriaView(){
     const [value, setValue] = useState(
         {
-            productoNombre:"",
-            productoDescripcion:"",
-            productoCantidad:0,
-            productoEstado: false, 
-            productoPrecio: 0,
-            productoImagen:"",
-            categoria:0
+            categoriaNombre:"",
+            categoriaEstado: false,
         }
     )
     const history = useHistory()
 
     const actualizarInput = (e) => {
-        if (e.target.name === "productoEstado"){
+        if (e.target.name === "categoriaEstado"){
             setValue({
                 ...value,
                 [e.target.name]:e.target.checked
@@ -38,11 +32,10 @@ export default function CrearProductoView(){
     const manejarSubmit = async (e) => {
         e.preventDefault()
         try {
-            
-            await crearProducto({...value})
+            await crearCategoria({...value})
             await Swal.fire({
                 icon:'success',
-                title:'Producto creado :)!',
+                title:'Categoria creada :)!',
                 showConfirmButton:false,
                 timer:3000
             })
@@ -51,12 +44,11 @@ export default function CrearProductoView(){
             console.log(error)
         }
     }
-
     return (
         <div>
-            <h1 className="text-center" style={{color:'#BF7C7C'}}>Registrar Producto</h1>
+            <h1 className="text-center" style={{color:'#BF7C7C'}}>Registrar Categoría</h1>
             
-            <FormProducto 
+            <FormCategoria 
                 value={value} 
                 actualizarInput={actualizarInput}
                 manejarSubmit={manejarSubmit}

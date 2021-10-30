@@ -102,24 +102,21 @@ export default function ListaDeseos() {
                                 <li className="list-group-item d-flex justify-content-between"
                                 key={i}>
                                     <div>
-                                        <span className="fw-bold">{prod.prod_nombre}</span>
+                                        <span className="fw-bold">{prod.content.productoNombre}</span>
                                         <br />
                                         <small>
                                         <CartImagen 
                                             className="img-thumbnail"
-                                            src={prod.prod_imagen} 
-                                            alt={prod.prod_imagen} />
+                                            src={prod.content.productoImagen} 
+                                            alt={prod.content.productoImagen} />
 
                                         </small>
 
                                     </div>
                                     <div>
                                         <br /><br /><br />
-                                        Descripción: {prod.prod_descripcion}
-                                        <br />
-                                        Color: {prod.prod_color}
-                                        <br />
-                                        Material: {prod.prod_material}
+                                        Descripción: {prod.content.productoDescripcion}
+                                        
                                     </div>
                                     <div>
 									
@@ -129,7 +126,7 @@ export default function ListaDeseos() {
                                     <btnEliminar onClick={eliminarDListaContext}>
                                         <IconEliminar/>
                                     </btnEliminar>
-                                    <div>S/ {prod.cantidad * prod.prod_precio}</div> 
+                                    <div>S/ {prod.cantidad * prod.content.productoPrecio}</div> 
                                     
                                     
 								</div>

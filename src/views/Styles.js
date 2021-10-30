@@ -150,7 +150,7 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 
 `
 
-export const ButtonHero = styled(LinkS)`
+export const ButtonHero = styled.a`
     border-radius: 50px;
     background: #AC5D5D;
     white-space: nowrap;

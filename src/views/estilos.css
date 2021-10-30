@@ -48,3 +48,51 @@ Form {
     /* margin: 100px; */
     margin-top: 20px;
 }
+.dropdown {
+    position: relative;
+    display: inline-block;
+  
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width:400px;
+    box-shadow: #ffff;
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: grid;
+  }
+
+.filtro{
+    display: flex;
+}
+
+.btnp{
+    border-radius: 5px;
+    background: #AC5D5D;
+    white-space: nowrap;
+    color: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    width:240px;
+    height:120px;
+    margin-top: 10px;
+    display: flex;
+    border:1px solid white;
+}
+    .btnp:hover {
+        background: #AC5D5D;
+        color: #CDB9B9;
+        border:1px solid white;
+    
+}
