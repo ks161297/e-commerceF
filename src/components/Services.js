@@ -13,17 +13,17 @@ const Services = () => {
             <ServicesWrapper>
                 <ServicesCard>
                     <ServicesIcon src={im1}/>
-                    <ServicesH2 to='/productos'>Tienda de regalos</ServicesH2>
+                    <ServicesH2 href='/productos'>Tienda de regalos</ServicesH2>
                     <ServicesP> El trabajo hecho con gusto y con amor, siempre es una creación original y única - RS.</ServicesP>
                 </ServicesCard>
                 <ServicesCard>
                     <ServicesIcon src={im2}/>
-                    <ServicesH2 to='/nosotros'>Conócenos</ServicesH2>
+                    <ServicesH2 href='/nosotros'>Conócenos</ServicesH2>
                     <ServicesP> Lee un poco más sobre nuestra tienda y puedes encontrar algún tip extra.</ServicesP>
                 </ServicesCard>
                 <ServicesCard>
                     <ServicesIcon src={im3}/>
-                    <ServicesH2 to='/contactanos'>Contáctanos</ServicesH2>
+                    <ServicesH2 href='/contactou'>Contáctanos</ServicesH2>
                     <ServicesP> Si te gustaría algo más personalizado, escríbenos para consultar.</ServicesP>
                 </ServicesCard>
              

@@ -123,7 +123,7 @@ export default function CarritoView() {
                         
                         </ul>
                         <HeroBtnWrapper>
-                            <ButtonHero href='/checkout'
+                            <ButtonHero href='/productos'
                                 onMouseEnter={onHover} 
                                 onMouseLeave={onHover}> ¡Vamos a comprar! {hover ? <ArrowForward/> : <ArrowRight/>}</ButtonHero>
                         </HeroBtnWrapper>

@@ -11,17 +11,17 @@ const Products = () => {
             <ProductsWrapper>
                 <ProductsCard>
                     <ProductsIcon src={im1}/>
-                    <ProductsH2 to='/productos'>Box 1</ProductsH2>
+                    <ProductsH2 href='/productos'>Box 1</ProductsH2>
                     <ProductsP> Para una fecha especial.</ProductsP>
                 </ProductsCard>
                 <ProductsCard>
                     <ProductsIcon src={im2}/>
-                    <ProductsH2 to='/productos'>Box 2</ProductsH2>
+                    <ProductsH2 href='/productos'>Box 2</ProductsH2>
                     <ProductsP> Para una fecha especial.</ProductsP>
                 </ProductsCard>
                 <ProductsCard>
                     <ProductsIcon src={im3}/>
-                    <ProductsH2 to='/productos'>Box 3</ProductsH2>
+                    <ProductsH2 href='/productos'>Box 3</ProductsH2>
                     <ProductsP>  Para una fecha especial.</ProductsP>
                 </ProductsCard>
              

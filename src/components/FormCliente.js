@@ -1,6 +1,6 @@
 
 import { ButtonReg } from "./general";
-import imgLogin from "../images/login.jpg"
+import imgLogin from "../images/joinus.jpg"
 
 export default function FormCliente({
     value,

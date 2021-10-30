@@ -20,7 +20,7 @@ const Footer = () => {
                         </FooterLinksItems>
                         <FooterLinksItems>
                             <FooterLinkTitle>Pruebas</FooterLinkTitle>
-                                <FooterLink to="/opciones-admin">Administrador</FooterLink>   
+                                <FooterLink href="/opciones-admin">Administrador</FooterLink>   
 
                                 
                         </FooterLinksItems>
@@ -31,16 +31,16 @@ const Footer = () => {
                         </FooterLinksItems>
                         <FooterLinksItems>
                             <FooterLinkTitle>ENCUÉNTRANOS EN</FooterLinkTitle>
-                                <FooterLink to="/singin">
+                                <FooterLink href="https://www.facebook.com/kim161297/">
                                     <FaFacebook/> Handmade-M&A
                                 </FooterLink>
-                                <FooterLink to="/singin">
+                                <FooterLink href="https://www.instagram.com/kim.silva.16/?hl=es">
                                     <FaInstagram/> Handmade-M&A
                                 </FooterLink>
-                                <FooterLink to="/singin">
+                                <FooterLink href="https://www.facebook.com/kim161297/">
                                     <FaTwitter/> Handmade-M&A
                                 </FooterLink>
-                                <FooterLink to="/singin">
+                                <FooterLink href="https://www.facebook.com/kim161297/">
                                     <FaYoutube/> Handmade-M&A    
                                 </FooterLink>
                         </FooterLinksItems>

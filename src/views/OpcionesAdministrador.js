@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import imgLogin from "../images/login.jpg"
+import imgLogin from "../images/admin.jpg"
 
 export default function OpcionesAdministrador(){
     return (

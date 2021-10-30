@@ -251,7 +251,7 @@ const Navbar = ({toggle}) => {
                                             <CartImagen 
                                                 className="img-thumbnail"
                                                 src={prod.content.productoImagen} 
-                                                alt={prod.content.productoImagen} />
+                                                alt={prod.productoImagen} />
                                         </td>
                                         <td>{prod.content.productoNombre}</td>
                                         <td> S/. {prod.content.productoPrecio}</td>

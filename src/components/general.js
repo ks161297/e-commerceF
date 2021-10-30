@@ -505,7 +505,7 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 
 `
 
-export const ButtonHero = styled(LinkR)`
+export const ButtonHero = styled.a`
     border-radius: 50px;
     background: #AC5D5D;
     white-space: nowrap;
@@ -741,7 +741,7 @@ export const StarIcon = styled(HiGift)`
     margin-top: -4px;
 `
 
-export const ProductsH2 = styled(LinkR)`
+export const ProductsH2 = styled.a`
 color: #000;
 cursor: pointer;
 font-size: 1rem;
@@ -854,7 +854,7 @@ export const SparIcon = styled(HiSparkles)`
     margin-top: -4px;
 `
 
-export const ServicesH2 = styled(LinkR)`
+export const ServicesH2 = styled.a`
 color: #fff;
 cursor: pointer;
 font-size: 1rem;
@@ -938,7 +938,7 @@ export const FooterLinkTitle = styled.h1`
     font-size: 14px;
     margin-bottom: 16px;
 `
-export const FooterLink = styled(LinkR)`
+export const FooterLink = styled.a`
     color: #fff;
     text-decoration: none;
     margin-bottom: 0.2rem;
