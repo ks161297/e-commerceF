@@ -4,8 +4,9 @@ import { obtenerCategorias } from "../services/categoriaService";
 import CircularStatic from '../components/Cargando'
 import { Link } from 'react-router-dom'
 import ListarCategorias from "../components/ListarCategorias";
+import axios from "axios"
 
-export default function PaginaAdminProductos(){
+export default function PaginaAdminCategorias(){
     const [categorias, setCategorias] = useState([])
     const [categoriaOriginal, setCategoriaOriginal] = useState([])
     const [cargando, setCargando] = useState([true])
@@ -21,10 +22,21 @@ export default function PaginaAdminProductos(){
             console.log(error)
         }
     }
+    
+    const onDelete = (id) => {
+        axios.delete(`${URL}/categoria/${id}`)
+        .then(() => {
+            getCategorias()
+        })
+    } 
+
+   
 
     useEffect(() => {
         getCategorias()
     }, [])
+
+    
 
     return (
         <div>

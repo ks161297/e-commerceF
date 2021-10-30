@@ -25,8 +25,32 @@ const obtenerClientes = async() => {
     }
 }
 
+const obtenerClientesPorId = async(id) => {
+    try {
+        let {data} = await axios.get(`${URL}/admin/${id}`)
+        return data
+    } catch (error) {
+        throw error
+    }
+}
+ 
+
+const editarCliente = async (clienteEditado, id) => {
+    try {
+        const headers = {
+            "Content-Type": "application/json"
+        }
+        const { data } = await axios.put(`${URL}/admin/${id}`, clienteEditado, {headers})
+        return data
+    } catch (error) {
+        throw error
+    }
+}
+
 export {
     crearCliente,
     obtenerClientes,
+    editarCliente,
+    obtenerClientesPorId,
 
 }

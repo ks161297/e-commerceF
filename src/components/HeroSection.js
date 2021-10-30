@@ -17,7 +17,7 @@ const HeroSection = () => {
             <HeroH1>¡BIENVENID@!</HeroH1>
             <HeroP> Para hacer las cosas bien es necesario: primero, el amor, segundo, la técnica. :)</HeroP>
             <HeroBtnWrapper>
-                <ButtonHero to='/registro'
+                <ButtonHero to="/crear"
                     onMouseEnter={onHover} 
                     onMouseLeave={onHover}> Regístrate {hover ? <ArrowForward/> : <ArrowRight/>}</ButtonHero>
             </HeroBtnWrapper>

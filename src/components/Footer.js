@@ -20,9 +20,6 @@ const Footer = () => {
                         </FooterLinksItems>
                         <FooterLinksItems>
                             <FooterLinkTitle>Pruebas</FooterLinkTitle>
-                                <FooterLink to="/crear-cliente">Crear cliente</FooterLink>
-                                <FooterLink to="/crear-categoria">Crear categoria</FooterLink>  
-                                <FooterLink to="/crear-producto">Crear Producto</FooterLink>
                                 <FooterLink to="/opciones-admin">Administrador</FooterLink>   
 
                                 

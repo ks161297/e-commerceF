@@ -34,6 +34,11 @@ export default function PaginaAdminClientes(){
                     <h1 className="text-center" style={{color:'#BF7C7C'}}>Clientes Registrados</h1>
                     <Link className="btn btn-lg my-2" style={{backgroundColor:'#C89696',color:'white'}} to='/crear-cliente'>
                         <i className="fas fa-plus"/> Registrar clientes
+                        
+                    </Link>
+                    <Link className="btn btn-lg my-2" style={{backgroundColor:'#C89696',color:'white'}} to='/filtro-cli'>
+                        <i className="fas fa-plus"/> Filtros
+                        
                     </Link>
                 </div>
             

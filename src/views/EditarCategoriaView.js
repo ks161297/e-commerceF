@@ -2,37 +2,32 @@ import { useState, useEffect} from 'react'
 import {useParams} from "react-router-dom"
 import { useHistory } from 'react-router-dom'
 import Swal from "sweetalert2"
-import { editarProducto, obtenerProductosPorId} from '../services/productoService'
-import FormProducto from '../components/FormProducto'
+import { editarCategoria, obtenerCategoriasPorId} from '../services/categoriaService'
+import FormCategoria from '../components/FormCategoria'
 
 
-export default function EditarProductoView() {
+export default function EditarCategoriaView() {
     const [value,setValue] = useState({
-        productoNombre:"",
-        productoDescripcion:"",
-        productoCantidad:0,
-        productoEstado: false, 
-        productoPrecio: 0,
-        productoImagen:"",
-        categoria:0
+        categoriaNombre:"",
+        categoriaEstado: false,
     })
     const {id} = useParams()
     const history = useHistory()
 
-    const getProducto = async () =>{
+    const getCategoria = async () =>{
         try {
-            const productoObtenido = await obtenerProductosPorId(id)
-            setValue({...productoObtenido})
+            const categoriaObtenida = await obtenerCategoriasPorId(id)
+            setValue({...categoriaObtenida})
         } catch (error) {
             console.log(error)
         }
     }
     useEffect(() =>{
-        getProducto()
+        getCategoria()
     }, [])
 
     const actualizarInput = (e) => {
-        if(e.target.name === "productoEstado"){
+        if(e.target.name === "categoriaEstado"){
             setValue({
                 ...value,
                 [e.target.name]:e.target.checked
@@ -48,10 +43,10 @@ export default function EditarProductoView() {
     const manejarSubmit = async (e) =>{
         e.preventDefault()
         try{
-            await editarProducto(value,id)
+            await editarCategoria(value,id)
             await Swal.fire({
                 icon:'success',
-                title:'Producto editado con exito  :)!',
+                title:'Categoria editada con exito  :)!',
                 showConfirmButton:false,
                 timer:3000
             })
@@ -65,7 +60,7 @@ export default function EditarProductoView() {
     return (
         <div>
             <h1>Editar Producto</h1>
-            <FormProducto 
+            <FormCategoria 
                 value={value}
                 actualizarInput={actualizarInput}
                 manejarSubmit={manejarSubmit}

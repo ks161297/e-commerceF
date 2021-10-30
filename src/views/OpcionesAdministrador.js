@@ -21,7 +21,7 @@ export default function OpcionesAdministrador(){
             <a type="button" className=" btn-lg btnp" href="/listar-cat">Categorias</a>
             <a type="button" className=" btn-lg btnp" href="/listar-prod">Productos</a>
             <a type="button" className=" btn-lg btnp" href="/listar-cli" >Clientes</a>
-            <button type="button" className=" btn-lg btnp">Ordenes</button>
+            <a type="button" className=" btn-lg btnp" href="/filtro-ord">Ordenes</a>
         </form>
         </div>
     </div>

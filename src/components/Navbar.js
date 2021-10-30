@@ -21,6 +21,9 @@ const Navbar = ({toggle}) => {
     const [producto, setProducto] = useState({})
     const {carrito} = useContext(CarritoContext)
 
+ 
+
+
     const {lista} = useContext(ListaContext)
     const {eliminarDLista} = useContext(ListaContext)
     const {eliminarDCarrito} = useContext(CarritoContext)
@@ -45,6 +48,7 @@ const Navbar = ({toggle}) => {
             console.error(error)
         }
     }
+
     const eliminarDListaContext = async() => {
         eliminarDLista(producto)
         const resultado = await Swal.fire({
@@ -324,8 +328,12 @@ const Navbar = ({toggle}) => {
                             <Modal.Body>
                                 <form>
                                     <div className="form-group">
-                                        <label for="inputUserName" value="mksss161297@gmail.com"> Usuario</label>
-                                        <input className="form-control" placeholder="Ingresa tu correo" type="text"/>
+                                        <label for="inputUserName"> Usuario</label>
+                                        <input 
+                                            type="text"
+                                            className="form-control" 
+                                            name="clienteCorreo"
+                                            placeholder="Ingresa tu correo" type="text"/>
                                     </div>
                                     <div className="form-group">
                                         <label for="inputPassword" value="123456">Contraseña</label>

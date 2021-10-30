@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+
+
 export default function ListarCategorias({categorias}){
-    console.log(categorias)
+    
     return (
         <div>
             <div>
@@ -16,11 +18,11 @@ export default function ListarCategorias({categorias}){
                         <tr key={i}>
                             <td>{cat.categoriaNombre}</td>
                             <td>
-                                <Link className="btn btn-warning btn-sm" to={`/editar/${cat.categoriaId}`}>
+                                <Link className="btn btn-warning btn-sm" to={`/editar-cat/${cat.categoriaId}`}>
                                     <i className="fas fa-edit"></i>
                                 </Link>
                                 {"   "}
-                                <Link className="btn btn-danger btn-sm" >
+                                <Link className="btn btn-danger btn-sm" to={`/eliminar-cat/${cat.categoriaId}`}>
                                     <i className="fas fa-trash-alt"></i>
                                     
                                 </Link>

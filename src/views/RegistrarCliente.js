@@ -52,7 +52,7 @@ export default function CrearClienteView(){
     }
     return (
         <div>
-            <h1 className="text-center" style={{color:'#BF7C7C'}}>Registrar Cliente</h1>
+            <h1 className="text-center" style={{color:'#BF7C7C'}}>Registrar Producto</h1>
             
             <FormCliente 
                 value={value} 

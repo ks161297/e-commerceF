@@ -230,7 +230,7 @@ transition: all 0.2s ease-in-out;
 
 `
 
-export const ButtonComprar = styled.button`
+export const ButtonComprar = styled.a`
 border-radius: 5px;
 background: #AC5D5D;
 white-space: nowrap;

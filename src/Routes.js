@@ -2,7 +2,7 @@ import { Route } from "react-router";
 import PaginaInicio from './views/PaginaInicio'
 import PaginaProductos from './views/PaginaProductos'
 import PaginaProducto from "./views/PaginaProducto";
-import ListaProductosView from "./views/ListaProductosView"
+// import ListaProductosView from "./views/ListaProductosView"
 import CrearProductoView from "./views/CrearProductoView"
 import EditarProductoView from "./views/EditarProductoView"
 import PaginaCarrito from "./views/PaginaCarrito"
@@ -16,9 +16,10 @@ import ListarProductosView from "./views/ListarProductosView"
 import OpcionesAdministrador from "./views/OpcionesAdministrador";
 import ListarCategoriasView from "./views/ListarCategoriaView";
 import ListarClientesView from "./views/ListarClientesView";
-
-
-
+import EditarCategoriaView from "./views/EditarCategoriaView";
+import EditarClienteView from "./views/EditarClienteView"
+import FiltroCliente from "./views/FiltroCliente"
+import FiltroOrdenes from "./views/FiltrosOrdenes";
 
 
 export default function Routes (){
@@ -27,7 +28,6 @@ export default function Routes (){
             <Route path='/' exact component={PaginaInicio}/>
             <Route path="/producto/:id" exact component={PaginaProducto}/>
             <Route path="/productos" exact component={PaginaProductos}/>
-            <Route path="/listaProductos" exact component={ListaProductosView} />
             <Route path="/crear" exact component={CrearProductoView} />
             <Route path="/editar/:id" exact component={EditarProductoView} />
             <Route path="/carrito" exact component={PaginaCarrito} />
@@ -41,6 +41,12 @@ export default function Routes (){
             <Route path="/opciones-admin" exact component ={OpcionesAdministrador}/>
             <Route path="/listar-cat" exact component={ListarCategoriasView}/>
             <Route path="/listar-cli" exact component={ListarClientesView}/>
+            <Route path="/editar-cat/:id" exact component={EditarCategoriaView} />
+            <Route path="/editar-cli/:id" exact component={EditarClienteView} />
+            <Route path="/editar-prod/:id" exact component={EditarProductoView} />
+            <Route path="/filtro-cli" exact component={FiltroCliente}/>
+            <Route path="/filtro-ord" exact component={FiltroOrdenes}/>
+           
 
         </div>  
     )

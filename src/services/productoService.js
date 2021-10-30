@@ -63,16 +63,16 @@ const crearProducto = async (nuevoProducto) => {
     }
 }
 
-const editarProducto = async (productoEditado, id) => {
+const editarProducto = async (categoriaEditada, id) => {
     try {
         const headers = {
             "Content-Type": "application/json"
         }
-        const { data } = await axios.put(`${URL}/${id}`, productoEditado, {headers})
+        const { data } = await axios.put(`${URL}/categoria/${id}`, categoriaEditada, {headers})
         return data
     } catch (error) {
         throw error
-    }
+      }
 }
 const eliminarProducto = async (productoliminado, id) => {
     try {
